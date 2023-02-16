@@ -1,12 +1,19 @@
 import React from 'react';
-import {NavBar,Footer,Hero} from './Components';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {NavBar,Footer,Hero,AddTemplate,GetFile} from './Components';
 // import NavBar from '../src/Components/NavBar/NavBar';
 import './App.css'
 const App = () => {
   return (
       <div className = "main_app">
         <NavBar />
-        <Hero />
+        <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Hero/>}/>
+          <Route path='/add' element={<AddTemplate/>}/>
+          <Route path='/get' element={<GetFile/>}/>
+        </Routes>
+        </BrowserRouter>
         <Footer />
       </div>
   )
