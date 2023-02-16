@@ -14,4 +14,4 @@ The engineering drawing extraction YOLO-based system directory contains a machin
 
 To run the engineering drawing extraction system, follow the instructions in the system directory's README file. You'll need to have Python and the required dependencies installed, as well as a dataset of engineering drawing images.
 
-We hope you find our repository useful, and we welcome contributions and feedback from the community. Happy hacking!
+
