@@ -7,24 +7,20 @@ import './AddTemplate.css'
 import axios from 'axios';
 
 const AddTemplate = () => {
-
   const [selectedFile,setSelectedFile] = React.useState(null);
   const varArray = [];
   const [parsedText, setText] = React.useState('')
   const appendVar = (value) => {
     varArray.push(value);
-    console.log(varArray)
   }
   const handleFileSelect = (e) => {
     setSelectedFile(e.target.files[0]);
-    console.log('selected file : ', e.target.files[0]);
   }
 
   const Parse = async (e) => {
     e.preventDefault()
-    // console.log(e.target.files[0]);
     if(!selectedFile){
-      console.log("No file selected")
+      window.alert("No file selected")
       return
     }
     const reader = new FileReader();
@@ -38,7 +34,6 @@ const AddTemplate = () => {
 
       let match;
       while((match = regex.exec(text)) !== null){
-        console.log(match[1]);
         appendVar(match[1]);
       }
     }
@@ -53,7 +48,7 @@ const AddTemplate = () => {
     <CreateTemplate />
     <form>
       <input type="file" name="WordFile" onChange = {handleFileSelect}/>
-      <button type="button" onClick={Parse}>Submit</button>
+      <button type="button" onClick={Parse}>Parse</button>
     </form>
     </>
   )
