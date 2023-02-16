@@ -6,18 +6,40 @@ import CreateTemplate from '../Hero/CreateTemplate';
 import './AddTemplate.css'
 import axios from 'axios';
 
+
+const Inputcomponent = (value) => {
+  const randomValue = Math.random()%100;
+  return (
+    <div>      
+      <label htmlFor={`${value}${randomValue}`}></label>
+      <select name={value} id={`${value}${randomValue}`}>
+        <option value="text">Text</option>
+        <option value="number">Number</option>
+        <option value="email">Email</option>
+      </select>
+    </div>
+
+  )
+}
+
 const AddTemplate = () => {
   const [selectedFile,setSelectedFile] = React.useState(null);
   const varArray = [];
   const [parsedText, setText] = React.useState('')
+  const [showDropDown,setShowDropDown] = React.useState(false);
+
   const appendVar = (value) => {
+    setShowDropDown(true);
     varArray.push(value);
+    console.log(value);
+    <Inputcomponent value={value}/>
   }
   const handleFileSelect = (e) => {
     setSelectedFile(e.target.files[0]);
+    //console.log(selectedFile);
   }
 
-  const Parse = async (e) => {
+  const Parse = (e) => {
     e.preventDefault()
     if(!selectedFile){
       window.alert("No file selected")
@@ -34,6 +56,7 @@ const AddTemplate = () => {
 
       let match;
       while((match = regex.exec(text)) !== null){
+
         appendVar(match[1]);
       }
     }
@@ -50,6 +73,20 @@ const AddTemplate = () => {
       <input type="file" name="WordFile" onChange = {handleFileSelect}/>
       <button type="button" onClick={Parse}>Parse</button>
     </form>
+    {showDropDown &&
+    <div>
+      <label htmlFor="title">Title : </label>
+      <input type="text" name="title" id="titile"/>
+      {
+        console.log(varArray)
+      }
+      {varArray &&
+        varArray.forEach((element) => {
+          <Inputcomponent value={element}/>
+        })
+      }
+    </div>
+    }
     </>
   )
 }
