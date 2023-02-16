@@ -1,3 +1,9 @@
+.DTA__navbar_list_general_style {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    cursor : pointer;
+}
+
 .DTA__navbar_main {
     width : 100%;
     display : flex;
@@ -5,3 +11,43 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.DTA__navbar_main_image {
+    flex : 0 1 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.DTA__navbar_main_image_imageElement {
+    width : 8rem;
+    cursor : pointer;
+}
+
+.DTA__navbar_main_list {
+    display: none; 
+    color: #ffffff; 
+    list-style-type: none; 
+    flex-direction: row; 
+    flex: 0 1 auto; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.DTA__navbar_main_list_login {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; 
+    padding-left: 1.75rem;
+    padding-right: 1.75rem; 
+    margin-left: 1rem;
+    margin-right: 1rem; 
+    border-radius: 9999px; 
+    cursor: pointer; 
+    background: #2952e3;
+}
+
+.DTA__navbar_main_list_login:hover {
+    background: #2546bd;
+}
+
+
+

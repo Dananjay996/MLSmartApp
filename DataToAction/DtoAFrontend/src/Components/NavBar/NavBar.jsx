@@ -4,8 +4,8 @@ import './NavBar.css';
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 
-const NavBarItem = ({title,className}) => {
-  <li className = {className}> {title} </li>
+const NavBarItem = ({title,classprops}) => {
+  <li className= {`DTA__navbar_list_general_style ${classprops}`}> {title} </li>
 }
 
 const NavBar = () => {
