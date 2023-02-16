@@ -6,15 +6,17 @@ import './App.css'
 const App = () => {
   return (
       <div className = "gradient-bg-welcome">
-        <NavBar />
+        
         <BrowserRouter>
+        <NavBar />
         <Routes>
           <Route path='/' element={<Hero/>}/>
           <Route path='/add' element={<AddTemplate/>}/>
           <Route path='/get' element={<GetFile/>}/>
         </Routes>
-        </BrowserRouter>
         <Footer />
+        </BrowserRouter>
+        
       </div>
   )
 }
