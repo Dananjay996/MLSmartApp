@@ -7,7 +7,8 @@ module.exports = {
             const client = await MongoClient.connect(process.env.MONGO_DB_URL)
             this.selectedDb = client.db('DtoA')
             console.log(this.selectedDb)
-        }catch(err){
+        }
+        catch(err){
             console.log(err)
         }
     }
