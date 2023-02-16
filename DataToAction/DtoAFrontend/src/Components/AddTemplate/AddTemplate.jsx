@@ -8,13 +8,13 @@ import axios from 'axios';
 
 
 const AddTemplate = () => {
-  const [selectedFile,setSelectedFile] = React.useState(null);
-  const [varArray,setVarArray] = React.useState([]);
-  let [valDataType,setValDataType] = React.useState([]);
+  const [selectedFile, setSelectedFile] = React.useState(null);
+  const [varArray, setVarArray] = React.useState([]);
+  let [valDataType, setValDataType] = React.useState([]);
   //const valDataType = [];
   const [parsedText, setText] = React.useState('')
-  const [showDropDown,setShowDropDown] = React.useState(false);
-  const [title,setTitle] = React.useState("");
+  const [showDropDown, setShowDropDown] = React.useState(false);
+  const [title, setTitle] = React.useState("");
 
   const inputChangeHandler = (index) => (e) => {
     let newArray = valDataType;
@@ -26,30 +26,30 @@ const AddTemplate = () => {
     //console.log(valDataType);
   }
 
-  const sendArray = varArray.map((value,index) => {
+  const sendArray = varArray.map((value, index) => {
     return {
-      name : value,
-      type : valDataType[index]
+      name: value,
+      type: valDataType[index]
     };
   });
 
   const submitHandler = (e) => {
-    var response = axios.post('http://localhost:3000/add-template',{
-      title:title,
-      content:parsedText,
-      inputFields:sendArray
-  }).then(res => {
+    var response = axios.post('http://localhost:3000/add-template', {
+      title: title,
+      content: parsedText,
+      inputFields: sendArray
+    }).then(res => {
       console.log(res)
-  }).catch((err) => {
+    }).catch((err) => {
       console.log(err)
-  }) 
-    
+    })
+
   }
 
   const appendVar = (value) => {
     setShowDropDown(true);
-    setVarArray(varArray => [...varArray,value])
-    setValDataType(valDataType => [...valDataType,"text"]);
+    setVarArray(varArray => [...varArray, value])
+    setValDataType(valDataType => [...valDataType, "text"]);
     //valDataType.push('text');
 
   }
@@ -60,7 +60,7 @@ const AddTemplate = () => {
 
   const Parse = (e) => {
     e.preventDefault()
-    if(!selectedFile){
+    if (!selectedFile) {
       window.alert("No file selected")
       return
     }
@@ -68,13 +68,13 @@ const AddTemplate = () => {
     reader.readAsArrayBuffer(selectedFile)
     reader.onload = (e) => {
       const content = e.target.result;
-      var doc = new Docxtemplater(new PizZip(content), {delimiters: {start: '12op1j2po1j2poj1po', end: 'op21j4po21jp4oj1op24j'}});
+      var doc = new Docxtemplater(new PizZip(content), { delimiters: { start: '12op1j2po1j2poj1po', end: 'op21j4po21jp4oj1op24j' } });
       var text = doc.getFullText();
       setText(text)
       const regex = /\((.*?)\)/g;
 
       let match;
-      while((match = regex.exec(text)) !== null){
+      while ((match = regex.exec(text)) !== null) {
 
         appendVar(match[1]);
       }
@@ -85,43 +85,43 @@ const AddTemplate = () => {
     }
   }
 
-  
+
 
   //console.log(sendArray);
-  
+
 
   return (
     <>
-    <CreateTemplate />
-    <form>
-      <input type="file" name="WordFile" onChange = {handleFileSelect}/>
-      <button type="button" onClick={Parse}>Parse</button>
-    </form>
-    {showDropDown &&
-    <div className="template__div">
-      <label htmlFor="title">Title : </label>
-      <input type="text" name="title" id="title" onChange={(e) => {setTitle(e.target.value)}}/>
-      {
-        //console.log(title)
+      <CreateTemplate />
+      <form>
+        <input type="file" name="WordFile" onChange={handleFileSelect} />
+        <button type="button" onClick={Parse}>Parse</button>
+      </form>
+      {showDropDown &&
+        <div className="template__div">
+          <label htmlFor="title">Title : </label>
+          <input type="text" name="title" id="title" onChange={(e) => { setTitle(e.target.value) }} />
+          {
+            //console.log(title)
+          }
+          {varArray &&
+            varArray.map((element, index) => {
+              //console.log(valDataType);
+              return (
+                <div>
+                  <label htmlFor={element}>{element} : </label>
+                  <select name={element} id={`${element}`} onChange={inputChangeHandler(index)}>
+                    <option value="text">Text</option>
+                    <option value="number">Number</option>
+                    <option value="email">Email</option>
+                  </select>
+                </div>
+              )
+            })
+          }
+          <button onClick={submitHandler}>Submit</button>
+        </div>
       }
-      {varArray &&
-        varArray.map((element,index) => {
-          //console.log(valDataType);
-          return (
-            <div>      
-              <label htmlFor={element}>{element} : </label>
-              <select name={element} id={`${element}`} onChange={inputChangeHandler(index)}>
-                <option value="text">Text</option>
-                <option value="number">Number</option>
-                <option value="email">Email</option>
-              </select>
-            </div>
-          )
-        })
-      }
-      <button onClick={submitHandler}>Submit</button>
-    </div>
-    }
     </>
   )
 }
