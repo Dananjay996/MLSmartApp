@@ -1,0 +1,11 @@
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .social-links a {
+    margin: 0 10px solid white;
+    color: #fff;
+    font-size: 24px;
+  }

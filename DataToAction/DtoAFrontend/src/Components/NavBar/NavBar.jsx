@@ -6,7 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import logo from '../../../images/logo.png';
 
 const NavBarItem = ({title,classprops}) => (
-  <li className= {`DTA__navbar_list_general_style ${classprops}`}> {title} </li>
+  <li className= {`DTA__navbar_list_general_style ${classprops}`}> <a>{title}</a> </li>
 )
 
 const NavBar = () => {
