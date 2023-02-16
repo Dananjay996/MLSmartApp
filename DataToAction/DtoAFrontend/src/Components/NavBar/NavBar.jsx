@@ -1,16 +1,17 @@
 //import {useState} from 'react';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import './NavBar.css';
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import logo from '../../../images/logo.png';
 
-const NavBarItem = ({title,classprops}) => (
-  <li className= {`DTA__navbar_list_general_style ${classprops}`}> {title} </li>
+const NavBarItem = ({title,classprops,link}) => (
+  <a className= {`DTA__navbar_list_general_style ${classprops}`} href={link}> {title} </a>
 )
 
 const NavBar = () => {
-
+  const navigate = useNavigate();
   const [toggleMenu,setToggleMenu] = React.useState(false);
 
   return (
@@ -20,9 +21,9 @@ const NavBar = () => {
       </div>
 
       <ul className="DTA__navbar_main_list">
-        {["Admin", "User", "Contact"].map((item,index) => (
-          <NavBarItem key={item + index} title={item}/>
-        ))}
+        <NavBarItem key={"Admin"} title={"Admin"} link={"/add"}/>
+        <NavBarItem key={"User"} title={"User"} link={"/get"}/>
+        <NavBarItem key={"Contact"} title={"Contact"} link={"#contact"}/>
 
         <li className="DTA__navbar_main_list_login">
           Login
