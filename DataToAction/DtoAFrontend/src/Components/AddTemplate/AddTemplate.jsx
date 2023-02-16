@@ -26,8 +26,24 @@ const AddTemplate = () => {
     //console.log(valDataType);
   }
 
-  const submitHandler = (e) => {
+  const sendArray = varArray.map((value,index) => {
+    return {
+      name : value,
+      type : valDataType[index]
+    };
+  });
 
+  const submitHandler = (e) => {
+    var response = axios.post('http://localhost:3000/add-template',{
+      title:title,
+      content:parsedText,
+      inputFields:sendArray
+  }).then(res => {
+      console.log(res)
+  }).catch((err) => {
+      console.log(err)
+  }) 
+    
   }
 
   const appendVar = (value) => {
@@ -69,12 +85,7 @@ const AddTemplate = () => {
     }
   }
 
-  const sendArray = varArray.map((value,index) => {
-    return {
-      name : value,
-      type : valDataType[index]
-    };
-  });
+  
 
   //console.log(sendArray);
   
