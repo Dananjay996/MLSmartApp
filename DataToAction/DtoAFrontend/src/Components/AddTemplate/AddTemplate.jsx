@@ -1,6 +1,8 @@
 import React from 'react'
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
+
+import CreateTemplate from '../Hero/CreateTemplate';
 import './AddTemplate.css'
 import axios from 'axios';
 
@@ -10,6 +12,7 @@ const AddTemplate = () => {
 
   const handleFileSelect = (e) => {
     setSelectedFile(e.target.files[0]);
+    console.log('selected file : ', e.target.files[0]);
   }
 
   const submitHandler = async (e) => {
@@ -34,10 +37,13 @@ const AddTemplate = () => {
   }  
 
   return (
+    <>
+    <CreateTemplate />
     <form onSubmit={submitHandler}>
       <input type="file" name="WordFile" onChange = {handleFileSelect}/>
       <button type="submit">Submit</button>
     </form>
+    </>
   )
 }
 
