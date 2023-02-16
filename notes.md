@@ -8,8 +8,8 @@ v) Boundary box based on the coordinates (x1,y1) and (x2,y2)
 
 ##problem statement 2
 
-1) Upload template
-2) Should extractt variables from the template, User shpuld be able to efine data type.
+1) Upload the template
+2) Should extractt variables from the template, User should be able to define data type.
 3) Should be able to save this template with unique..
 4) Creation of a new contract user should be able to select the template from existing template
 5) form should be shown allowing the user to update all the variables
