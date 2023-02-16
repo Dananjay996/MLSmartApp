@@ -39,7 +39,7 @@ const AddTemplate = () => {
   }  
 
   return (
-    <form onSubmit={submitHandler}>
+    <form>
       <input type="file" name="WordFile" onChange = {handleFileSelect}/>
       <button type="button" onClick={Parse}>Submit</button>
     </form>
