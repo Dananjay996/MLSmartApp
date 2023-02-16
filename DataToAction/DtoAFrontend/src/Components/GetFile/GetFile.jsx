@@ -1,7 +1,13 @@
 import React from 'react'
+import UseTemplate from '../Hero/UseTemplate';
+import axios from 'axios';
 
-export default function GetFile() {
+const GetFile = () => {
   return (
-    <div>GetFile</div>
+    <div>
+      <UseTemplate />
+    </div>
   )
 }
+
+export default GetFile;
