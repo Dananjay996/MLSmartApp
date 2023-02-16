@@ -7,7 +7,7 @@ router.post('/add-template', async (req,res,next) => {
         var {title,content,inputfields} = req.body
         const oldTemplate = await mongo.selectedDb.collection("templates").find({title:title}).toArray()
         if(oldTemplate.length>0){
-            return res.status(409).send("Template already exist!")
+            return res.status(409).send("Template already exists!")
         }
         var data = await mongo.selectedDb.collection('templates').insertOne(req.body)
         res.status(200).send(data)
