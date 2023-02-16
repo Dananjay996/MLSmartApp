@@ -9,10 +9,10 @@ import axios from 'axios';
 const AddTemplate = () => {
 
   const [selectedFile,setSelectedFile] = React.useState(null);
-  const [varArray, setVarArray] = React.useState([])
+  const varArray = [];
   const [parsedText, setText] = React.useState('')
   const appendVar = (value) => {
-    setVarArray([...varArray,value])
+    varArray.push(value);
     console.log(varArray)
   }
   const handleFileSelect = (e) => {
@@ -38,6 +38,7 @@ const AddTemplate = () => {
 
       let match;
       while((match = regex.exec(text)) !== null){
+        console.log(match[1]);
         appendVar(match[1]);
       }
     }
