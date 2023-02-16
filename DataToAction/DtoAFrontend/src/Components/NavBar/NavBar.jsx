@@ -13,9 +13,23 @@ const NavBar = () => {
   const [toggleMenu,setTogglMenu] = useState(false);
 
   return (
-    <div>
-      
-    </div>
+    <nav className = "DTA__navbar_main">
+      <div className = "DTA__navbar_main_image">
+        <img src = "#" alt="image not found" className="DTA__navbar_main_image_imageElement" />
+      </div>
+
+      <ul className="DTA__navbar_main_list">
+        {["Admin", "User", "Contact"].map((item,index) => (
+          <NavBarItem key={item+index} title={item} className="DTA__navbar_main_list_item "/>
+        ))}
+
+        <li className="DTA__navbar_main_list_login">
+          Login
+        </li>
+
+      </ul>
+
+    </nav>
   )
 }
 
