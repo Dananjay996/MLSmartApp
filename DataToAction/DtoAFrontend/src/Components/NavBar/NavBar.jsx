@@ -5,9 +5,9 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import logo from '../../../images/logo.png';
 
-const NavBarItem = ({title,classprops}) => {
+const NavBarItem = ({title,classprops}) => (
   <li className= {`DTA__navbar_list_general_style ${classprops}`}> {title} </li>
-}
+)
 
 const NavBar = () => {
 
@@ -21,7 +21,7 @@ const NavBar = () => {
 
       <ul className="DTA__navbar_main_list">
         {["Admin", "User", "Contact"].map((item,index) => (
-          <NavBarItem key={item+index} title={item}/>
+          <NavBarItem key={item + index} title={item}/>
         ))}
 
         <li className="DTA__navbar_main_list_login">
@@ -30,7 +30,7 @@ const NavBar = () => {
       </ul>
 
       <div className = "DTA__navbar_main_menu">
-      {!toggleMenu && (
+        {!toggleMenu && (
           <HiMenuAlt4 fontSize={28} className="DTA__navbar_main_menuopen" onClick={() => setToggleMenu(true)} />
         )}
         {toggleMenu && (
@@ -40,7 +40,7 @@ const NavBar = () => {
           <ul
             className="DTA__navbar_main_menu_smallscreen_display blue-glassmorphism">
             <li className="DTA__navbar_main_menu_smallscreen_display_item"><AiOutlineClose onClick={() => setToggleMenu(false)} /></li>
-            {["Market", "Exchange", "Tutorials", "Wallets"].map(
+            {["Admin","User","Contact"].map(
               (item, index) => <NavBarItem key={item + index} title={item} classprops="DTA__navbar_main_menu_smallscreen_dropdown" />,
             )}
           </ul>

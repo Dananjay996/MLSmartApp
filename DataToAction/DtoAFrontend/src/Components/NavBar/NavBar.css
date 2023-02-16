@@ -12,6 +12,8 @@
     align-items: center;
 }
 
+
+
 .DTA__navbar_main_image {
     flex : 0 1 auto;
     justify-content: center;
@@ -24,7 +26,7 @@
 }
 
 .DTA__navbar_main_list {
-    /* display: none;  */
+    display: none; 
     color: #ffffff; 
     list-style-type: none; 
     flex-direction: row; 
@@ -94,6 +96,25 @@
     line-height: 1.75rem; 
 }
 
+@media all and (min-width : 768px){
+    .DTA__navbar_main{
+        justify-content: center;
+    }
+    .DTA__navbar_main_image{
+        flex : 0.5;
+    }
+
+    .DTA__navbar_main_list {
+        display: flex;
+    }
+
+    .DTA__navbar_main_menuopen{
+        display : none;
+    }
+    .DTA__navbar_main_menuclose {
+        display : none;
+    }
+}
 
 
 
