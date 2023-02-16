@@ -24,15 +24,14 @@ const Inputcomponent = (value) => {
 
 const AddTemplate = () => {
   const [selectedFile,setSelectedFile] = React.useState(null);
-  const varArray = [];
+  const [varArray,setVarArray] = React.useState([]);
   const [parsedText, setText] = React.useState('')
   const [showDropDown,setShowDropDown] = React.useState(false);
 
   const appendVar = (value) => {
     setShowDropDown(true);
-    varArray.push(value);
-    console.log(value);
-    <Inputcomponent value={value}/>
+    setVarArray(varArray => [...varArray,value])
+
   }
   const handleFileSelect = (e) => {
     setSelectedFile(e.target.files[0]);
