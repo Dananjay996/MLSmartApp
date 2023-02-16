@@ -1,4 +1,6 @@
 import React from 'react'
+import Docxtemplater from "docxtemplater";
+import PizZip from "pizzip";
 import './AddTemplate.css'
 import axios from 'axios';
 
@@ -11,24 +13,25 @@ const AddTemplate = () => {
   }
 
   const submitHandler = async (e) => {
+    e.preventDefault()
     // console.log(e.target.files[0]);
-    e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("selectedFile", selectedFile);
-
-    try{
-      const response = await axios({
-        method : "post",
-        url : "http://localhost:3000/add-template",
-        data : formData,
-        headers : {"Content-Type" : "multipart/form-data"},
-      });
+    if(!selectedFile){
+      console.log("No file selected")
+      return
     }
-    catch(err){
-      console.log(err);
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(selectedFile)
+    reader.onload = (e) => {
+      const content = e.target.result;
+    var doc = new Docxtemplater(new PizZip(content), {delimiters: {start: '12op1j2po1j2poj1po', end: 'op21j4po21jp4oj1op24j'}});
+    var text = doc.getFullText();
+    console.log(text)
     }
-  }
+
+    reader.onerror = (error) => {
+      console.error('Error parsing file', error);
+    }
+  }  
 
   return (
     <form onSubmit={submitHandler}>
