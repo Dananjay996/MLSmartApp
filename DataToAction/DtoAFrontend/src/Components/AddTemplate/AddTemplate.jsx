@@ -7,28 +7,24 @@ import './AddTemplate.css'
 import axios from 'axios';
 
 
-const Inputcomponent = (value) => {
-  console.log(value);
-  return (
-    <div>      
-      <label htmlFor={`${value}`}>{value.value} : </label>
-      <select name={value} id={`${value}`}>
-        <option value="text">Text</option>
-        <option value="number">Number</option>
-        <option value="email">Email</option>
-      </select>
-    </div>
-
-  )
-}
-
 const AddTemplate = () => {
   const [selectedFile,setSelectedFile] = React.useState(null);
   const [varArray,setVarArray] = React.useState([]);
-  const [valDataType,setValDataType] = React.useState([]);
+  let [valDataType,setValDataType] = React.useState([]);
+  //const valDataType = [];
   const [parsedText, setText] = React.useState('')
   const [showDropDown,setShowDropDown] = React.useState(false);
   const [title,setTitle] = React.useState("");
+
+  const inputChangeHandler = (index) => (e) => {
+    let newArray = valDataType;
+    //console.log(index);
+    //console.log(e.target.value);
+    newArray[index] = e.target.value;
+    //console.log(newArray);
+    setValDataType(newArray);
+    //console.log(valDataType);
+  }
 
   const submitHandler = (e) => {
 
@@ -38,6 +34,7 @@ const AddTemplate = () => {
     setShowDropDown(true);
     setVarArray(varArray => [...varArray,value])
     setValDataType(valDataType => [...valDataType,"text"]);
+    //valDataType.push('text');
 
   }
   const handleFileSelect = (e) => {
@@ -70,7 +67,17 @@ const AddTemplate = () => {
     reader.onerror = (error) => {
       console.error('Error parsing file', error);
     }
-  }  
+  }
+
+  const sendArray = varArray.map((value,index) => {
+    return {
+      name : value,
+      type : valDataType[index]
+    };
+  });
+
+  //console.log(sendArray);
+  
 
   return (
     <>
@@ -88,8 +95,16 @@ const AddTemplate = () => {
       }
       {varArray &&
         varArray.map((element,index) => {
+          //console.log(valDataType);
           return (
-            <Inputcomponent value={element}/>
+            <div>      
+              <label htmlFor={element}>{element} : </label>
+              <select name={element} id={`${element}`} onChange={inputChangeHandler(index)}>
+                <option value="text">Text</option>
+                <option value="number">Number</option>
+                <option value="email">Email</option>
+              </select>
+            </div>
           )
         })
       }
