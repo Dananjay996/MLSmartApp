@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {NavBar,Footer,Hero,AddTemplate,GetFile} from './Components';
 import './App.css'
+
 const App = () => {
   return (
       <div className = "gradient-bg-welcome">
