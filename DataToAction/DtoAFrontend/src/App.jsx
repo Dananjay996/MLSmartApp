@@ -5,7 +5,7 @@ import {NavBar,Footer,Hero,AddTemplate,GetFile} from './Components';
 import './App.css'
 const App = () => {
   return (
-      <div className = "main_app">
+      <div className = "gradient-bg-welcome">
         <NavBar />
         <BrowserRouter>
         <Routes>
