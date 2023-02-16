@@ -38,7 +38,7 @@ const AddTemplate = () => {
 
       let match;
       while((match = regex.exec(text)) !== null){
-        console.log(match[1]);
+        appendVar(match[1]);
       }
     }
 
