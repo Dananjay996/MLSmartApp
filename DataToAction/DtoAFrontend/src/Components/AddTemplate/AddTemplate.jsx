@@ -91,7 +91,6 @@ const AddTemplate = () => {
 
 
   return (
-<<<<<<< HEAD
     <div className="template__div">
     <CreateTemplate />
     <form>
@@ -124,40 +123,6 @@ const AddTemplate = () => {
     </div>
     }
     </div>
-=======
-    <>
-      <CreateTemplate />
-      <form>
-        <input type="file" name="WordFile" onChange={handleFileSelect} />
-        <button type="button" onClick={Parse}>Parse</button>
-      </form>
-      {showDropDown &&
-        <div className="template__div">
-          <label htmlFor="title">Title : </label>
-          <input type="text" name="title" id="title" onChange={(e) => { setTitle(e.target.value) }} />
-          {
-            //console.log(title)
-          }
-          {varArray &&
-            varArray.map((element, index) => {
-              //console.log(valDataType);
-              return (
-                <div>
-                  <label htmlFor={element}>{element} : </label>
-                  <select name={element} id={`${element}`} onChange={inputChangeHandler(index)}>
-                    <option value="text">Text</option>
-                    <option value="number">Number</option>
-                    <option value="email">Email</option>
-                  </select>
-                </div>
-              )
-            })
-          }
-          <button onClick={submitHandler}>Submit</button>
-        </div>
-      }
-    </>
->>>>>>> bf76db628a778da135ac81cd11e12068cce3249b
   )
 }
 
