@@ -26,8 +26,26 @@ const NavBar = () => {
         <li className="DTA__navbar_main_list_login">
           Login
         </li>
-
       </ul>
+
+      <div className = "DTA__navbar_main_menu">
+      {!toggleMenu && (
+          <HiMenuAlt4 fontSize={28} className="DTA__navbar_main_menuopen" onClick={() => setToggleMenu(true)} />
+        )}
+        {toggleMenu && (
+          <AiOutlineClose fontSize={28} className="DTA__navbar_main_menuclose" onClick={() => setToggleMenu(false)} />
+        )}
+        {toggleMenu && (
+          <ul
+            className="DTA__navbar_main_menu_smallscreen_display"
+          >
+            <li className="DTA__navbar_main_menu_smallscreen_display_item"><AiOutlineClose onClick={() => setToggleMenu(false)} /></li>
+            {["Market", "Exchange", "Tutorials", "Wallets"].map(
+              (item, index) => <NavBarItem key={item + index} title={item} classprops="DTA__navbar_main_menu_smallscreen_dropdown" />,
+            )}
+          </ul>
+        )}
+      </div>
 
     </nav>
   )
