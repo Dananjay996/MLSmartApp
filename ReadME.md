@@ -6,7 +6,7 @@ Welcome to our ML SmartApp Hackathon Repository! This repository contains two di
 
 The analytical dashboard directory contains a web application that displays data visualizations and insights generated from machine learning models. The dashboard is built using Python and popular data analysis libraries, such as Pandas, Matplotlib, and Plotly.
 
-To run the dashboard, follow the instructions in the dashboard directory's README file. You'll need to have Python and the required dependencies installed on your machine.
+To run the dashboard, follow the instructions in the dashboard directory's README file. You'll need to have Python and the required dependencies installed in your machine.
 
 ## Engineering Drawing Extraction YOLO-Based System
 
