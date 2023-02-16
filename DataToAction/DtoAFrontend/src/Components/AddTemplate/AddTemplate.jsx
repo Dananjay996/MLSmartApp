@@ -8,11 +8,11 @@ import axios from 'axios';
 
 
 const Inputcomponent = (value) => {
-  const randomValue = Math.random()%100;
+  console.log(value);
   return (
     <div>      
-      <label htmlFor={`${value}${randomValue}`}></label>
-      <select name={value} id={`${value}${randomValue}`}>
+      <label htmlFor={`${value}`}>{value.value} : </label>
+      <select name={value} id={`${value}`}>
         <option value="text">Text</option>
         <option value="number">Number</option>
         <option value="email">Email</option>
@@ -25,12 +25,19 @@ const Inputcomponent = (value) => {
 const AddTemplate = () => {
   const [selectedFile,setSelectedFile] = React.useState(null);
   const [varArray,setVarArray] = React.useState([]);
+  const [valDataType,setValDataType] = React.useState([]);
   const [parsedText, setText] = React.useState('')
   const [showDropDown,setShowDropDown] = React.useState(false);
+  const [title,setTitle] = React.useState("");
+
+  const submitHandler = (e) => {
+
+  }
 
   const appendVar = (value) => {
     setShowDropDown(true);
     setVarArray(varArray => [...varArray,value])
+    setValDataType(valDataType => [...valDataType,"text"]);
 
   }
   const handleFileSelect = (e) => {
@@ -73,17 +80,20 @@ const AddTemplate = () => {
       <button type="button" onClick={Parse}>Parse</button>
     </form>
     {showDropDown &&
-    <div>
+    <div className="template__div">
       <label htmlFor="title">Title : </label>
-      <input type="text" name="title" id="titile"/>
+      <input type="text" name="title" id="title" onChange={(e) => {setTitle(e.target.value)}}/>
       {
-        console.log(varArray)
+        //console.log(title)
       }
       {varArray &&
-        varArray.forEach((element) => {
-          <Inputcomponent value={element}/>
+        varArray.map((element,index) => {
+          return (
+            <Inputcomponent value={element}/>
+          )
         })
       }
+      <button onClick={submitHandler}>Submit</button>
     </div>
     }
     </>
