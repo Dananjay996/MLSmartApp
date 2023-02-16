@@ -1,8 +1,9 @@
-import {useState} from 'react';
+//import {useState} from 'react';
 import React from 'react'
 import './NavBar.css';
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
+import logo from '../../../images/logo.png';
 
 const NavBarItem = ({title,classprops}) => {
   <li className= {`DTA__navbar_list_general_style ${classprops}`}> {title} </li>
@@ -10,12 +11,12 @@ const NavBarItem = ({title,classprops}) => {
 
 const NavBar = () => {
 
-  const [toggleMenu,setToggleMenu] = useState(false);
+  const [toggleMenu,setToggleMenu] = React.useState(false);
 
   return (
     <nav className = "DTA__navbar_main">
       <div className = "DTA__navbar_main_image">
-        <img src = "#" alt="image not found" className="DTA__navbar_main_image_imageElement" />
+        <img src = {logo} alt="image not found" className="DTA__navbar_main_image_imageElement" />
       </div>
 
       <ul className="DTA__navbar_main_list">
