@@ -34,6 +34,12 @@ const AddTemplate = () => {
       var doc = new Docxtemplater(new PizZip(content), {delimiters: {start: '12op1j2po1j2poj1po', end: 'op21j4po21jp4oj1op24j'}});
       var text = doc.getFullText();
       setText(text)
+      const regex = /\((.*?)\)/g;
+
+      let match;
+      while((match = regex.exec(text)) !== null){
+        console.log(match[1]);
+      }
     }
 
     reader.onerror = (error) => {
