@@ -1,12 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {NavBar,Footer,Hero,AddTemplate,GetFile} from './Components';
-// import NavBar from '../src/Components/NavBar/NavBar';
 import './App.css'
 const App = () => {
   return (
       <div className = "gradient-bg-welcome">
-        
         <BrowserRouter>
         <NavBar />
         <Routes>
@@ -16,7 +14,6 @@ const App = () => {
         </Routes>
         <Footer />
         </BrowserRouter>
-        
       </div>
   )
 }
