@@ -6,13 +6,8 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import logo from '../../../images/logo.png';
 
-<<<<<<< HEAD
-const NavBarItem = ({title,classprops}) => (
-  <li className= {`DTA__navbar_list_general_style ${classprops}`}> <a>{title}</a> </li>
-=======
 const NavBarItem = ({title,classprops,link}) => (
   <a className= {`DTA__navbar_list_general_style ${classprops}`} href={link}> {title} </a>
->>>>>>> baacba19c7b1b9de3248bdd47710fc23b191b24d
 )
 
 const NavBar = () => {
