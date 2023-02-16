@@ -4,7 +4,7 @@ import {NavBar,Footer,Hero} from './Components';
 import './App.css'
 const App = () => {
   return (
-      <div className = "main_app">
+      <div className = "gradient-bg-welcome">
         <NavBar />
         <Hero />
         <Footer />

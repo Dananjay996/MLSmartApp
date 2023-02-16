@@ -10,7 +10,7 @@ const NavBarItem = ({title,classprops}) => {
 
 const NavBar = () => {
 
-  const [toggleMenu,setTogglMenu] = useState(false);
+  const [toggleMenu,setToggleMenu] = useState(false);
 
   return (
     <nav className = "DTA__navbar_main">
@@ -20,7 +20,7 @@ const NavBar = () => {
 
       <ul className="DTA__navbar_main_list">
         {["Admin", "User", "Contact"].map((item,index) => (
-          <NavBarItem key={item+index} title={item} className="DTA__navbar_main_list_item "/>
+          <NavBarItem key={item+index} title={item}/>
         ))}
 
         <li className="DTA__navbar_main_list_login">
@@ -37,8 +37,7 @@ const NavBar = () => {
         )}
         {toggleMenu && (
           <ul
-            className="DTA__navbar_main_menu_smallscreen_display"
-          >
+            className="DTA__navbar_main_menu_smallscreen_display blue-glassmorphism">
             <li className="DTA__navbar_main_menu_smallscreen_display_item"><AiOutlineClose onClick={() => setToggleMenu(false)} /></li>
             {["Market", "Exchange", "Tutorials", "Wallets"].map(
               (item, index) => <NavBarItem key={item + index} title={item} classprops="DTA__navbar_main_menu_smallscreen_dropdown" />,
