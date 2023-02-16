@@ -26,14 +26,14 @@ const AddTemplate = () => {
     //console.log(valDataType);
   }
 
-  const sendArray = varArray.map((value, index) => {
-    return {
-      name: value,
-      type: valDataType[index]
-    };
-  });
-
+  
   const submitHandler = (e) => {
+    const sendArray = varArray.map((value, index) => {
+      return {
+        name: value,
+        type: valDataType[index]
+      };
+    });
     var response = axios.post('http://localhost:3000/add-template', {
       title: title,
       content: parsedText,
