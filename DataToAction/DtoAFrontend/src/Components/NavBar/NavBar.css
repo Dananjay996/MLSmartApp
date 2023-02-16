@@ -2,6 +2,8 @@
     margin-left: 1rem;
     margin-right: 1rem;
     cursor : pointer;
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .DTA__navbar_main {
