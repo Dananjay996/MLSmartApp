@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import UseTemplate from '../Hero/UseTemplate';
 import axios from 'axios';
+import './GetFile.css';
 
 const GetFile = () => {
 
@@ -25,6 +26,12 @@ const GetFile = () => {
     const titles = data.map((object) => object.title);
     setFilteredTitles(titles.filter((title) => title));
   }, [data]);
+
+  const submitHandler = () => {
+    return (
+      <div></div>
+    )
+  }
 
 
   const handleSelect = (event) => {
@@ -51,9 +58,9 @@ const GetFile = () => {
   },[valueObject])
 
   return (
-    <div>
+    <div className="DTA__fileGet_container">
       <UseTemplate />
-      <select value={selectedTitle} onChange={handleSelect}>
+      <select value={selectedTitle} onChange={handleSelect} className="DTA__select_container">
         {filteredTitles.map((title, index) => (
           <option key={index} value={title}>
             {title}
@@ -66,14 +73,17 @@ const GetFile = () => {
           {data
             .filter((obj) => obj.title === selectedTitle)
             .map((obj) => (
-              <div key={obj._id}>
+              <>
+              <div key={obj._id} className="DTA__dropdown_container">
                 {obj.inputFields.map((field) => (
-                  <div key={field.name}>
+                  <div key={field.name} className="DTA__dropdown_container_item">
                     <label htmlFor={field.name}>{field.name} : </label>
                     <input type={field.type}/>
                   </div>
                 ))}
               </div>
+              <button onClick={submitHandler}>Submit Values</button>
+              </>
             ))}
         </>
       )}
