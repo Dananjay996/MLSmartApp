@@ -11,6 +11,7 @@ const GetFile = () => {
   const [valueSelected, setValueSelected] = useState(false);
   const [selectedObject, setSelectedObject] = useState({});
   const [valueObject, setValueObject] = useState({})
+  let [text, setText] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +29,8 @@ const GetFile = () => {
   }, [data]);
 
   const submitHandler = () => {
-    console.log(valueObject)
+    console.log(text);
+
   }
 
 
@@ -37,10 +39,11 @@ const GetFile = () => {
     setValueSelected(true);
     const fetchData = async () => {
       const response = await axios.get(`http://localhost:3000/template/${event.target.value}`);
-      console.log(response.data)
+      //console.log(response.data)
       setSelectedObject(response.data);
+      setText(response.data.content);
       var arr = response.data.inputFields;
-      console.log(arr)
+      //console.log(arr)
       var obj = {}
       arr.forEach((item) => {
           obj[item.name] = ""
@@ -51,15 +54,18 @@ const GetFile = () => {
     fetchData();
   }
 
-  useEffect(() => {
-    console.log(valueObject)
-  },[valueObject])
+  // useEffect(() => {
+  //   console.log(text);
+
+  // },[text])
 
   const handleChange = (e,field) =>{
     var obj = valueObject;
     //console.log(field.type);
     obj[field.name] = e.target.value;
     setValueObject(obj)
+   // console.log(valueObject);
+
   }
 
   return (
@@ -87,7 +93,7 @@ const GetFile = () => {
                   </div>
                 ))}
               </div>
-              <button onClick={submitHandler}>Submit Values</button>
+              <button onClick={(e) => submitHandler(e)}>Submit Values</button>
               </>
             ))}
         </>
