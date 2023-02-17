@@ -29,7 +29,18 @@ const GetFile = () => {
   }, [data]);
 
   const submitHandler = () => {
-    console.log(text);
+    //console.log(text);
+    let newText = text;
+    for (const key in valueObject){
+      newText = newText.replace("(" + key.toString() + ")",` ${valueObject[key]} `);
+      //console.log(newText);
+      //console.log(valueObject[key]);
+      //console.log(key);
+    }
+    //console.log(text);
+    //console.log(newText);
+    setText(newText)
+      .then((val) => console.log('valu is : ',value));
 
   }
 
@@ -54,17 +65,17 @@ const GetFile = () => {
     fetchData();
   }
 
-  // useEffect(() => {
-  //   console.log(text);
+  useEffect(() => {
+    console.log(text);
 
-  // },[text])
+  },[text])
 
   const handleChange = (e,field) =>{
     var obj = valueObject;
     //console.log(field.type);
     obj[field.name] = e.target.value;
     setValueObject(obj)
-   // console.log(valueObject);
+    //console.log(valueObject);
 
   }
 
@@ -93,7 +104,7 @@ const GetFile = () => {
                   </div>
                 ))}
               </div>
-              <button onClick={(e) => submitHandler(e)}>Submit Values</button>
+              <button onClick={submitHandler}>Submit Values</button>
               </>
             ))}
         </>
