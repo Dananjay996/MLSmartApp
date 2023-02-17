@@ -108,13 +108,15 @@ const AddTemplate = () => {
         varArray.map((element,index) => {
           //console.log(valDataType);
           return (
-            <div className-="template__div_items">      
+            <div className-="template__div_items">
+              <div className="template__div_items_value">      
               <label htmlFor={element}>{element} : </label>
               <select name={element} id={`${element}`} onChange={inputChangeHandler(index)}>
                 <option value="text">Text</option>
                 <option value="number">Number</option>
                 <option value="email">Email</option>
               </select>
+              </div>
             </div>
           )
         })
