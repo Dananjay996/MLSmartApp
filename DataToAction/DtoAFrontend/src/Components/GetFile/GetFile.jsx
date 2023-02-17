@@ -6,18 +6,6 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 
-const generatePDF = (text) => {
-  const doc = new jsPDF();
-
-  doc.setFontSize(12);
-  doc.setFont('helvetica', 'bold');
-
-  // Add text to the PDF document
-  doc.text(text, 10, 10);
-
-  // Save the PDF document and allow the user to download it
-  doc.save('my-document.pdf');
-}
 
 const GetFile = () => {
 
@@ -29,6 +17,28 @@ const GetFile = () => {
   const [valueObject, setValueObject] = useState({})
   let [text, setText] = useState("");
 
+  const generatePDF = (text) => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+
+    // Add text to the PDF document
+    var line = 25 // Line height to start text at
+    var lineHeight = 5
+    var leftMargin = 20
+    var wrapWidth = 180
+
+    var splitText = doc.splitTextToSize(text, wrapWidth)
+    for (var i = 0, length = splitText.length; i < length; i++) {
+      // loop thru each line and increase
+      doc.text(splitText[i], leftMargin, line)
+      line = lineHeight + line
+    }
+
+    // Save the PDF document and allow the user to download it
+    doc.save(`${selectedTitle}.pdf`);
+  }
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('http://localhost:3000/all-template');
