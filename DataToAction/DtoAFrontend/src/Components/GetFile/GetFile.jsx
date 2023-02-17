@@ -37,11 +37,10 @@ const GetFile = () => {
       //console.log(valueObject[key]);
       //console.log(key);
     }
+    
     //console.log(text);
     //console.log(newText);
-    setText(newText)
-      .then((val) => console.log('valu is : ',value));
-
+    //setText(newText)
   }
 
 
