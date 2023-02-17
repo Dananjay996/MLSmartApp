@@ -8,6 +8,7 @@ const GetFile = () => {
   const [filteredTitles, setFilteredTitles] = useState([]);
   const [selectedTitle, setSelectedTitle] = useState("");
   const [valueSelected, setValueSelected] = useState(false);
+  const [selectedObject, setSelectedObject] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,11 +25,16 @@ const GetFile = () => {
     setFilteredTitles(titles.filter((title) => title));
   }, [data]);
 
+
   const handleSelect = (event) => {
     setSelectedTitle(event.target.value);
     setValueSelected(true);
-    //console.log('changed');
-    //console.log(selectedTitle)
+    const fetchData = async () => {
+      const response = await axios.get(`http://localhost:3000/template/${event.target.value}`);
+      console.log(response.data)
+      setSelectedObject(response.data);
+    }
+    fetchData();
   }
 
   return (
