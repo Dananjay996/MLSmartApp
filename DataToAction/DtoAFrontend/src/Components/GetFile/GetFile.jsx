@@ -28,9 +28,7 @@ const GetFile = () => {
   }, [data]);
 
   const submitHandler = () => {
-    return (
-      <div></div>
-    )
+    console.log(valueObject)
   }
 
 
@@ -57,6 +55,12 @@ const GetFile = () => {
     console.log(valueObject)
   },[valueObject])
 
+  const handleChange = (e,name) =>{
+    var obj = valueObject;
+    obj[name] = e.target.value;
+    setValueObject(obj)
+  }
+
   return (
     <div className="DTA__fileGet_container">
       <UseTemplate />
@@ -78,7 +82,7 @@ const GetFile = () => {
                 {obj.inputFields.map((field) => (
                   <div key={field.name} className="DTA__dropdown_container_item">
                     <label htmlFor={field.name}>{field.name} : </label>
-                    <input type={field.type}/>
+                    <input type={field.type} onChange={(e) => handleChange(e,field.name)}/>
                   </div>
                 ))}
               </div>
