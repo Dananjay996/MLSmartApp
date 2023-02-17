@@ -1,0 +1,45 @@
+.DTA__hero_container{
+    min-height: 100vh;
+    padding-top: 50px;
+}
+
+.DTA__hero_row{
+    width: 80%;
+    max-width: 1500px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;    
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.DTA__hero_image_container{
+    flex: 1;
+    min-width: 300px;
+    margin: 15px;
+}
+
+.DTA__hero_content_container{
+    flex: 1;
+    min-width: 300px;
+    margin: 15px;
+}
+.DTA__hero_content_title{
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.DTA__hero_content_desc{
+    padding: 20px;
+    padding-top: 0px;
+    font-size: 20px;
+    line-height: 30px;
+}
+.DTA__hero_image_container >img{
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+
