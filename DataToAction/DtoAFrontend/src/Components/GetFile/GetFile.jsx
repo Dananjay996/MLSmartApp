@@ -8,7 +8,8 @@ const GetFile = () => {
   const [filteredTitles, setFilteredTitles] = useState([]);
   const [selectedTitle, setSelectedTitle] = useState("");
   const [valueSelected, setValueSelected] = useState(false);
-  const [selectedObject, setSelectedObject] = useState({})
+  const [selectedObject, setSelectedObject] = useState({});
+  const [valueObject, setValueObject] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,9 +34,21 @@ const GetFile = () => {
       const response = await axios.get(`http://localhost:3000/template/${event.target.value}`);
       console.log(response.data)
       setSelectedObject(response.data);
+      var arr = response.data.inputFields;
+      console.log(arr)
+      var obj = {}
+      arr.forEach((item) => {
+          obj[item.name] = ""
+          
+      })
+      setValueObject(obj)
     }
     fetchData();
   }
+
+  useEffect(() => {
+    console.log(valueObject)
+  },[valueObject])
 
   return (
     <div>
