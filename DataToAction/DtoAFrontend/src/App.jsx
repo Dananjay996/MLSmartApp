@@ -10,9 +10,9 @@ const App = () => {
         <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path='https://ml-smart-app.vercel.app/' element={<Hero/>}/>
-          <Route path='https://ml-smart-app.vercel.app/add' element={<AddTemplate/>}/>
-          <Route path='https://ml-smart-app.vercel.app/get' element={<GetFile/>}/>
+          <Route path='/' element={<Hero/>}/>
+          <Route path='/add' element={<AddTemplate/>}/>
+          <Route path='/get' element={<GetFile/>}/>
         </Routes>
         <Footer />
         </BrowserRouter>
